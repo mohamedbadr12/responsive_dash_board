@@ -3,14 +3,22 @@ import 'package:responsive_dash_board/model/all_expenses_item_model.dart';
 import 'package:responsive_dash_board/utils/app_assets.dart';
 import 'package:responsive_dash_board/views/widgets/all_expenses_item.dart';
 
-class AllExpensesItemListView extends StatelessWidget {
+class AllExpensesItemListView extends StatefulWidget {
   const AllExpensesItemListView({super.key});
-  static const List expenses=[
-    AllExpensesItemModel(title: "Balance", image: Assets.imagesBalance, price: r"$20,129", date: "April 2022"),
-    AllExpensesItemModel(title: "Income", image: Assets.imagesIncome, price: r"$20,129", date: "April 2022"),
-    AllExpensesItemModel(title: "Expenses", image: Assets.imagesExpenses, price: r"$20,129", date: "April 2022"),
+
+  @override
+  State<AllExpensesItemListView> createState() => _AllExpensesItemListViewState();
+}
+
+class _AllExpensesItemListViewState extends State<AllExpensesItemListView> {
+  final List expenses=[
+    const AllExpensesItemModel(title: "Balance", image: Assets.imagesBalance, price: r"$20,129", date: "April 2022"),
+    const AllExpensesItemModel(title: "Income", image: Assets.imagesIncome, price: r"$20,129", date: "April 2022"),
+    const AllExpensesItemModel(title: "Expenses", image: Assets.imagesExpenses, price: r"$20,129", date: "April 2022"),
 
   ];
+  int selectedIndex=0;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,11 +27,24 @@ class AllExpensesItemListView extends StatelessWidget {
       children: expenses.asMap().entries.map((e){
         int index=e.key;
         var item=e.value;
-        return index==1 ?Expanded(child: Padding(padding:const EdgeInsets.symmetric(horizontal: 12),child: AllExpensesItem(allExpensesItemModel: item, isSelected: false,))):
-        Expanded(child: AllExpensesItem(allExpensesItemModel: item, isSelected: false,));
-        
+        return index==1 ?Expanded(child: GestureDetector(onTap: (){
+          updatedIndex(index);
+        },
+            child: Padding(padding:const EdgeInsets.symmetric(horizontal: 12),
+            child: AllExpensesItem(allExpensesItemModel: item, isSelected: selectedIndex==index,)))):
+        Expanded(child: GestureDetector(onTap:(){
+          updatedIndex(index);
+        },child: AllExpensesItem(allExpensesItemModel: item, isSelected: selectedIndex==index,)));
+
       }).toList(),
     );
-      
+
+  }
+
+  void updatedIndex(int index) {
+   setState(() {
+     selectedIndex=index;
+     print(selectedIndex);
+   });
   }
 }
