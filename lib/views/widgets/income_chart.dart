@@ -14,13 +14,13 @@ class _IncomeChartState extends State<IncomeChart> {
   @override
   Widget build(BuildContext context) {
 
-    return PieChart(getChartData());
+    return AspectRatio(aspectRatio:1,child: PieChart(getChartData()));
   }
 
   PieChartData getChartData() {
     return PieChartData(
       pieTouchData: PieTouchData(enabled: true,touchCallback: (p0, pieTouchResponse) {
-activeIndex=pieTouchResponse?.touchedSection?.touchedSectionIndex ??-1;
+       activeIndex=pieTouchResponse?.touchedSection?.touchedSectionIndex ??-1;
 setState(() {
 
 });
