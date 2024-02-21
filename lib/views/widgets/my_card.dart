@@ -19,8 +19,8 @@ class MyCard extends StatelessWidget {
         child: Column(
           children: [
             ListTile(contentPadding: const EdgeInsets.only(top: 16,right: 42,left: 31),
-              title: Text("Name card",style: Styles.styleRegular16.copyWith(color: Colors.white)),
-              subtitle: Text("Syah Bandi",style: Styles.styleMedium20,),
+              title: Text("Name card",style: Styles.styleRegular16(context).copyWith(color: Colors.white)),
+              subtitle: Text("Syah Bandi",style: Styles.styleMedium20(context),),
               trailing: SvgPicture.asset(Assets.imagesGallery),
             ),
             const Expanded(child: SizedBox()),
@@ -29,16 +29,16 @@ class MyCard extends StatelessWidget {
                children: [
                  Text(
                      '0918 8124 0042 8129',
-                     style: Styles.styleSemiBold24.copyWith(color: Colors.white)
+                     style: Styles.styleSemiBold24(context).copyWith(color: Colors.white)
                  ),
                  Text(
                      '12/20 -124',
-                     style: Styles.styleRegular16.copyWith(color: Colors.white)
+                     style: Styles.styleRegular16(context).copyWith(color: Colors.white)
                  ),
                ],
              ),
            ),
-            const SizedBox(height: 54-28,)
+            const Flexible(child: SizedBox(height: 54-28,))
 
           ],
         ),

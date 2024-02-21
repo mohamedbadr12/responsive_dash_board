@@ -8,7 +8,7 @@ final String hint;
   Widget build(BuildContext context) {
     return  TextField(
       decoration: InputDecoration(
-        hintStyle: Styles.styleRegular16.copyWith(
+        hintStyle: Styles.styleRegular16(context).copyWith(
           color: const Color(0xFFAAAAAA)
         ),
         hintText: hint,

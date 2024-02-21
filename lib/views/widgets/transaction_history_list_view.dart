@@ -11,11 +11,9 @@ static const List transactionHistory=[
 ];
   @override
   Widget build(BuildContext context) {
-    return  ListView.builder(
-      shrinkWrap: true,
-      itemCount: transactionHistory.length,
-        itemBuilder: (context, index) {
-          return TransactionItem(transactionModel: transactionHistory[index]);
-        },);
+    return Column(
+      children: transactionHistory.map((e) => TransactionItem(transactionModel: e)).toList()
+    );
+
   }
 }
