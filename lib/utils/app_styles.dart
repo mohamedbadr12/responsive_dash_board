@@ -98,7 +98,7 @@ double getResponsiveFontSize( context,{required double fontSize}){
   double responsiveFontSize=fontSize * scaleFactor;
   double lowerLimit=fontSize *.8;
   double upperLimit=fontSize *1.2;
-  print("base fontSize= $fontSize lower=$lowerLimit h =$upperLimit");
+  // print("base fontSize= $fontSize lower=$lowerLimit h =$upperLimit");
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
 }
 
@@ -119,7 +119,7 @@ double getScaleFactor(context){
   }
 
   else {
-    return width/1500;
+    return width/1920;
   }
 }
 
